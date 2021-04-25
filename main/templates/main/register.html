@@ -1,0 +1,39 @@
+{% extends 'main/index.html' %} {% load crispy_forms_tags %} {% block content %}
+
+<div
+  class="container"
+  style="
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid green;
+    border-top: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  "
+>
+  {% if error %}
+  <p class="alert alert-danger">{{error}}</p>
+  {% endif %}
+  <form
+    method="POST"
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    {% csrf_token %} {{form}}
+    <br />
+    <button class="btn btn-success" type="submit"><i class="fa fa-user-plus"></i> Register</button>
+  </form>
+  <br />
+  <p>
+    Already have account,
+    <a class="btn btn-primary" href="/login"><i class="fa fa-sign-in"></i> login</a> here.
+  </p>
+</div>
+
+{% endblock %}

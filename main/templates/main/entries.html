@@ -1,0 +1,53 @@
+{% extends 'main/index.html' %} {% block content %}
+
+<div
+  class="container"
+  style="
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  {% if error %}
+  <p class="alert alert-danger">{{error}}</p>
+  {% endif %}
+  <ul class="list-group" style="width: 80%">
+    {% if count > 0 %} {% for entry in page_obj %}
+    <li class="list-group-item list-group-item-info">
+      <p class="h4">{{entry.date}}</p>
+      <a class="btn btn-success" href="/entry/{{entry.id}}"><i class="fa fa-eye"></i> View</a>
+    </li>
+    {% endfor %} {% else %}
+    <p class="alert alert-warning">No entries yet!!!</p>
+    {% endif %}
+  </ul>
+  <br />
+  <span class="pagination pagination-sm">
+    {% if page_obj.has_previous %}
+    <a class="page-link h4" href="?page=1"><i class="fa fa-fast-backward"></i> First</a>
+    <a class="page-link h4" href="?page={{page_obj.previous_page_number}}"
+      ><i class="fa fa-step-backward"></i> Previous</a
+    >
+    {% endif %}
+
+    <span
+      class="page-link h4"
+      style="background-color: royalblue; color: white; border: none"
+      >{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span
+    >
+
+    {% if page_obj.has_next %}
+    <a class="page-link h4" href="?page={{page_obj.next_page_number}}">Next <i class="fa fa-step-forward"></i> </a>
+    <a class="page-link h4" href="?page={{page_obj.paginator.num_pages}}"
+      >Last <i class="fa fa-fast-forward"></i></a
+    >
+    {% endif %}
+  </span>
+  <br />
+  <a class="btn btn-warning" href="/add"><i class="fa fa-pencil"></i> New Entry</a>
+</div>
+
+{% endblock %}

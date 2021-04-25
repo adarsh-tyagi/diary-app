@@ -1,0 +1,32 @@
+{% extends 'main/index.html' %} {% block content %}
+
+<div
+  class="container"
+  style="
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  {% if error %}
+  <p class="alert alert-danger">{{error}}</p>
+  {% endif %}
+
+  <p class="alert alert-info">{{entry.data}}</p>
+  <p class="alert alert-secondary">
+    <i class="fa fa-calendar"></i> {{entry.date}}
+  </p>
+  <div style="width: 50%; display: flex; justify-content: space-between">
+    <a class="btn btn-danger" href="/entry/{{entry.id}}/delete"
+      ><i class="fa fa-trash"></i> Delete</a
+    >
+    <a class="btn btn-primary" href="/entries"
+      ><i class="fa fa-arrow-circle-left"></i> Back</a
+    >
+  </div>
+</div>
+
+{% endblock %}
