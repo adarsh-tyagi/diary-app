@@ -3,4 +3,3 @@ This web application is developed in python django. User can create the account 
 It's frontend is designed in html, css and bootstrap.
 Go and write your diary now!
 
-Click here[https://deardiary-app.herokuapp.com/]
